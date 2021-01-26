@@ -10,7 +10,6 @@ class Soldier {
 
     receiveDamage (theDamage) {
          this.health -= theDamage;
-         return this.health;
        }   
 }
 let rambo = new Soldier(500, 10)
@@ -47,9 +46,9 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
     receiveDamage(theDamage) {
-        this.health -= theDamage
+        this.health -= theDamage;
         if (this.health > 0) {
-            return `A Saxon has received ${theDamage} points of damage`;
+            return `A ${this.name} has received ${theDamage} points of damage`;
         } else {
             return `A Saxon has died in combat`;
         }
@@ -63,11 +62,11 @@ class Saxon extends Soldier {
 class War {
     vikingArmy = [];
     saxonArmy = [];
-   addViking(Viking) {
-    this.Viking.push(Viking);
+   addViking(pike) {
+    this.Viking.push(pike);
    } 
-   addSaxon() {
-
+   addSaxon(arrow) {
+    this.Saxon.push(arrow);
    }
    vikingAttack() {
 
@@ -79,3 +78,10 @@ class War {
 
    }
 }
+
+let viking = new Viking('John', 250, 60)
+let saxon = new Saxon(69, 100)
+let war = new War()
+
+newWar.addViking(viking)
+newWar.addSaxon(saxon)
