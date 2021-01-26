@@ -9,11 +9,12 @@ class Soldier {
     }
 
     receiveDamage (theDamage) {
-         if (this.health -= receiveDamage);
+         this.health -= theDamage;
          return this.health;
-    }   
+       }   
 }
-    
+let rambo = new Soldier(500, 10)
+rambo.receiveDamage(99)
 
 // Viking
 class Viking extends Soldier {
@@ -24,8 +25,12 @@ class Viking extends Soldier {
         
     
     receiveDamage(theDamage) {
-        if (i=0, theDamage > 0, i++);
-        return this.health;
+      this.health -= theDamage;
+      if (this.health > 0) {
+          return `${this.name} has received ${theDamage} points of damage`
+      } else {
+          return `${this.name} has died in act of combat`
+      }
     }
 
     battleCry() {
@@ -42,10 +47,11 @@ class Viking extends Soldier {
 // Saxon
 class Saxon extends Soldier {
     receiveDamage(theDamage) {
+        this.health -= theDamage
         if (this.health > 0) {
-            return 'A Saxon has received ${theDamage} points of damage';
+            return `A Saxon has received ${theDamage} points of damage`;
         } else {
-            return 'A Saxon has died in combat';
+            return `A Saxon has died in combat`;
         }
         
     }

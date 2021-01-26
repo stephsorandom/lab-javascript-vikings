@@ -125,9 +125,9 @@ describe('Viking', () => {
       expect(viking.receiveDamage(75)).toEqual(`${name} has received 75 points of damage`);
     });
     //
-    // it('should return "NAME has died in act of combat", if the Viking dies', () => {
-    //   expect(viking.receiveDamage(health)).toEqual(`${name} has died in act of combat`);
-    // });
+    it('should return "NAME has died in act of combat", if the Viking dies', () => {
+      expect(viking.receiveDamage(health)).toEqual(`${name} has died in act of combat`);
+    });
   });
 
   describe('battleCry() method', () => {
