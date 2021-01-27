@@ -7,11 +7,11 @@ class Soldier {
     attack() {
         return this.strength;
     }
-
     receiveDamage (theDamage) {
          this.health -= theDamage;
        }   
 }
+
 let rambo = new Soldier(500, 10)
 rambo.receiveDamage(99)
 
@@ -21,100 +21,89 @@ class Viking extends Soldier {
         super(health, strength);
         this.name = name;
     }
-        
-    
     receiveDamage(theDamage) {
       this.health -= theDamage;
       if (this.health > 0) {
-          return `${this.name} has received ${theDamage} points of damage`
+          return `${this.name} has received ${theDamage} points of damage`;
       } else {
-          return `${this.name} has died in act of combat`
+          return `${this.name} has died in act of combat`;
       }
     }
-
     battleCry() {
-        return "Odin Owns You All!"
+        return "Odin Owns You All!";
     }
-
 }
-
-
-
-
-
 
 // Saxon
 class Saxon extends Soldier {
     receiveDamage(theDamage) {
         this.health -= theDamage;
         if (this.health > 0) {
-            return `A ${this.name} has received ${theDamage} points of damage`;
+            return `A Saxon has received ${theDamage} points of damage`;
         } else {
             return `A Saxon has died in combat`;
         }
-        
     }
 }
 
-
-
 // War
-class War {
+class War { 
     vikingArmy = [];
     saxonArmy = [];
-   addViking(pike) {
-    this.Viking.push(pike);
-   } 
 
-   addSaxon(arrow) {
-    this.Saxon.push(arrow);
-   }
-
-   vikingAttack() {
-    let luckySoldier = getRandomInt(this.vikingArmy.length)
-    let unluckySoldier = getRandomInt(this.saxonArmy.length)
-    this.saxonArmy[unluckySoldier].receiveDamage(this.vikingArmy[luckySoldier].strength)
-   
-    if(this.saxonArmy[unluckySoldier].health <=0) {
-        this.saxonArmy.splice(unluckySolider,1);
-        return `A Saxon has died in combat`
-    } else {
-        return `A Saxon has received ${this.vikingArmy[luckySoldier].strength} of damage!`
+    addViking (sword) {
+        this.vikingArmy.push(sword)
     }
+    addSaxon (arrow) {
+        this.saxonArmy.push(arrow)
+    }
+    vikingAttack() {
+        let luckySoldier = getRandomInt(this.vikingArmy.length);
+        let unluckySoldier = getRandomInt(this.saxonArmy.length);
+        this.saxonArmy[unluckySoldier].receiveDamage(this.vikingArmy[luckySoldier].strength)
+
+        if(this.saxonArmy[unluckySoldier].health<=0)
+        {
+            this.saxonArmy.splice(unluckySoldier,1);
+            return 'A Saxon has died in combat';
+        } else {
+            return `A Saxon has received ${this.vikingArmy[luckySoldier].strength} of damage!`;
+        }
+        
     }
 
+    saxonAttack() {
+        let luckySoldier = getRandomInt(this.saxonArmy.length);
+        let unluckySoldier = getRandomInt(this.vikingArmy.length);
+        this.vikingArmy[unluckySoldier].receiveDamage(this.saxonArmy[luckySoldier].strength);
 
-
-   saxonAttack() {
-    let luckySoldier = getRandomInt(this.saxonArmy.length)
-    let unluckySoldier = getRandomInt(this.vikingArmy.length)
-    this.vikingArmy[unluckySoldier].receiveDamage(this.saxonArmy[luckySoldier].strength)
-   
-    if(this.vikingArmy[unluckySoldier].health<=0) 
-    {
-        this.vikingArmy.splice(unluckySolider,1);
-        return `A Viking has fallen`
-    } else {
-        return `${this.vikingArmy[luckySoldier].name} has received ${this.saxonArmy[unluckySoldier].name} of damage!`
+        if(this.vikingArmy[unluckySoldier].health<=0)
+        {
+            this.vikingArmy.splice(unluckySoldier,1);
+            return 'A Viking has fallen'
+        }else{
+            return `${this.vikingArmy[unluckySoldier].name} has received ${this.saxonArmy[luckySoldier].strength} points of damage`
+        }
     }
+    showStatus() {
+        if (this.saxonArmy.length == 0) {
+            return "Vikings have won the war of the century!";
+        } else if (this.vikingArmy.length == 0) {
+            return "Saxons have fought for their lives and survived another day...";
+        } else {
+            return "Vikings and Saxons are still in the thick of battle.";
+        }
     }
-   }
-
-   
-   showStatus() {
-    if()
-   }
 }
 
 let viking = new Viking ('Ragnar', 300, 300)
 let saxon = new Saxon (200, 250)
 
-let war = new War()
+let newWar = new War() 
 
-newWar.addViking(viking)
 newWar.addSaxon(saxon)
+newWar.addViking(viking)
 
-// newWar.vikingAttack()
 function getRandomInt (max) {
     return Math.floor(Math.random()*Math.floor(max))
 }
